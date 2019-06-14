@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Questão 1 - Lista de Compras</title>
+</head>
+
+<body>
+    <h1>Lista de Compras</h1>
+    <label>Quantidade
+        <input id="quantidade" type="number">
+    </label>
+    <label>Item
+        <input id="item" type="text">
+    </label>
+
+    <button id="adicionar">Adicionar</button>
+    <button id="limpar">Limpar</button>
+
+    <ul id="lista">
+
+    </ul>
+
+    <script>
+        var quantidade;
+        var item;
+        var lista = document.getElementById("lista");
+        var botaoAdd = document.getElementById("adicionar");
+        var botaoLimpar = document.getElementById("limpar");
+        var r;
+        botaoAdd.addEventListener("click", adicionaItem);
+        function adicionaItem() {
+            item = document.getElementById("item");
+            quantidade = document.getElementById("quantidade");
+            r = document.createElement("li");
+            r.textContent = quantidade.value + "\t" + item.value;
+            lista.appendChild(r);
+        }
+
+        botaoLimpar.addEventListener("click", limpaCampos);
+        function limpaCampos() {
+            lista.textContent = "";
+        }
+    </script>
+</body>
+
+</html>
