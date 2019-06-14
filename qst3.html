@@ -8,17 +8,43 @@
     <h1>Excursão</h1>
     <form name="excursao">
         <label>
-            Nome:<input type="text"></input>
-            Idade:<input type="number"></input>
+            Nome:<input type="text" name="nome"></input>
+            Idade:<input type="number" name="idade"></input>
         </label>
         <button id="enviar" type="submit">Enviar</button>
+        <button id="remover" hidden="true">Remover Selecionado</button>
     </form>
+    <h2>Adultos</h2>
     <ul id="listaAdultos">
 
     </ul>
 
+    <h2>Estudantes</h2>
     <ul id="listaEstudantes">
-        
+
     </ul>
+
+    <script>
+        var nome;
+        var idade;
+        var listaAdultos = document.getElementById("listaAdultos");
+        var listaEstudantes = document.getElementById("listaEstudantes");
+        var botao = document.getElementById("enviar");
+        var botaoRemove = document.getElementById("remover");
+        botao.addEventListener("click", atualizaListas)
+        function atualizaListas(e){
+            e.preventDefault();
+            nome = document.forms.namedItem("excursao").elements.nome;
+            idade = document.forms.namedItem("excursao").elements.idade;
+            var novo = document.createElement("li");
+            novo.textContent = nome.value + " - " + idade.value;
+            if(Number(idade.value) >= 18){
+                listaAdultos.appendChild(novo);
+            }
+            else{
+                listaEstudantes.appendChild(novo);
+            }
+        }
+    </script>
 </body>
 </html>
