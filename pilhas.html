@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Questão 2 - Ilustrar Pilhas</title>
 </head>
+
 <body>
-    
+    <h1>Ilustrar Uma Pilha</h1>
+    <label>
+        Entrada
+        <input id="entrada" type="text">
+    </label>
+    <button id="empilha">Empilhar</button>
+    <button id="desempilha">Desempilhar</button>
+    <ol id="lista">
+
+    </ol>
+    <script>
+        var entrada = document.getElementById("entrada");
+        var lista = document.getElementById("lista");
+        var botaoEmpilha = document.getElementById("empilha");
+        var botaoDesempilha = document.getElementById("desempilha");
+        botaoEmpilha.addEventListener("click", empilhar)
+        function empilhar(){
+            var novoItem = document.createElement("li");
+            novoItem.textContent =  entrada.value;
+            lista.appendChild(novoItem);
+        }
+        botaoDesempilha.addEventListener("click", desempilhar);
+        function desempilhar(){
+            lista.removeChild(lista.lastChild);
+        }
+    </script>
 </body>
+
 </html>
